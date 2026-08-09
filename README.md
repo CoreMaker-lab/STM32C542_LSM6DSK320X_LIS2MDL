@@ -54,13 +54,18 @@ This section introduces the **LSM6DSK320X gyroscope interrupt-based data acquisi
 
 本章介绍如何使用 STM32C542CCT6 驱动 LSM6DSK320X 实现单击（Single Tap）和双击（Double Tap）检测。LSM6DSK320X 内置硬件 Tap 检测功能，可通过低 G 加速度计对敲击动作进行识别，并支持将单击、双击事件映射到 INT1/INT2 中断引脚。 
 
+This chapter introduces how to use the **STM32C542CCT6** to drive the **LSM6DSK320X** for **Single Tap** and **Double Tap** detection. The LSM6DSK320X features built-in hardware tap detection, which uses the low-g accelerometer to recognize tapping events and supports routing single-tap and double-tap events to the **INT1/INT2 interrupt pins**.
 
+- **STM32C5_LSM6DSK320X_Project4**:STM32C5开发LSM6DSK320X(4)----高级计步器、步数检测与步数计数 
+- **CSDN Blog**:
+本章将在前面外部中断配置的基础上，使能计步器并设置 Debounce 参数，将 Step Detector 事件映射至 INT1；当检测到有效步数后，由 STM32C542 响应外部中断并读取芯片内部 Step Counter，实现步数检测与实时计数。  
+Based on the external interrupt configuration introduced earlier, this chapter enables the **pedometer** function and configures the **debounce parameters**, then routes the **Step Detector** event to **INT1**. When a valid step is detected, the **STM32C542** responds to the external interrupt and reads the internal **Step Counter** of the LSM6DSK320X, enabling real-time step detection and counting.
 
+- **STM32C5_LSM6DSK320X_Project5**:STM32C5开发LSM6DSK320X(5)----显著运动检测   
+- **CSDN Blog**:
+本章介绍如何使用 STM32C542CCT6 驱动 LSM6DSK320X 实现 Wake-up 运动检测。LSM6DSK320X 内置可配置的 Wake-up 标准中断，可利用 Low-G 加速度计对设备的动态运动进行检测，并在运动幅度超过设定阈值后通过 INT1/INT2 输出中断信号。  
 
-
-
-
-
+This chapter introduces how to use the **STM32C542CCT6** to drive the **LSM6DSK320X** for **Wake-up motion detection**. The LSM6DSK320X integrates a configurable **Wake-up interrupt** function that uses the **low-g accelerometer** to detect device motion. When the detected acceleration exceeds the configured threshold, an interrupt signal can be generated through the **INT1/INT2 pins**.
 
 
 
