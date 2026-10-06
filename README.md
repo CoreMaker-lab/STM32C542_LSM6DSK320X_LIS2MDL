@@ -26,21 +26,9 @@
 - **STM32C5_LSM6DSK320X_Project1**:STM32C5开发LSM6DSK320X(1)----轮询获取陀螺仪数据
 - **CSDN Blog**:
 
-LSM6DSK320X 是一款紧凑型、低功耗、高性能的惯性测量单元 (IMU)，集成了三轴数字低重力加速度计（满量程可选，最高可达 ±16 g）、三轴数字高重力加速度计（最高可达 ±320 g）和三轴数字陀螺仪。其先进的架构通过四个独立通道处理加速度和角速率数据：用户界面 (UI)、光学防抖 (OIS)、电子防抖 (EIS) 和高重力加速度通道。
-LSM6DSK320X 专为要求苛刻的运动传感应用而设计，可实现高强度运动跟踪、冲击和脑震荡监测以及其他高动态应用场景。
-该器件采用全新的陀螺仪架构，配备全差分读出链和增强的机械对称性，从而具备出色的抗振性和抗外部干扰能力。它还支持边缘人工智能功能，通过有限状态机 (FSM) 实现可配置的运动检测，并通过机器学习核心 (MLC) 实现情境感知，为个人电子产品、物联网、运动和可穿戴设备以及无人机应用提供智能功能。
-为了优化功耗，LSM6DSK320X 集成了自适应自配置 (ASC) 功能，可根据检测到的运动模式或 MLC 事件实时自动调整传感器设置，无需主机干预。此外，该数字子系统还集成了 ST 的低功耗传感器融合 (SFLP) 技术，用于空间定位。
-此外，专用的高g加速度传感器具有独立的通道和专用的滤波功能，可确保可靠的冲击检测，使该设备非常适合运动、脑震荡检测、冲击检测、紧急呼叫和无人机应用。
-The **LSM6DSK320X** is a compact, low-power, high-performance inertial measurement unit (IMU) integrating a 3-axis digital low-g accelerometer with selectable full-scale ranges up to ±16 g, a 3-axis digital high-g accelerometer with a full-scale range up to ±320 g, and a 3-axis digital gyroscope. Its advanced architecture processes acceleration and angular-rate data through four independent channels: the User Interface (UI), Optical Image Stabilization (OIS), Electronic Image Stabilization (EIS), and the high-g acceleration channel.
+本章介绍如何使用 STM32C5 通过 I²C 接口驱动 LSM6DSV320X，以轮询方式读取三轴角速度数据。程序首先完成设备 ID 检查、软件复位和基本参数配置，设置陀螺仪的输出数据率与量程，并使能 BDU（块数据更新）。主循环检查数据就绪状态，读取原始角速度数据并转换为对应的物理单位，最后通过串口输出采集结果。
 
-Designed for demanding motion-sensing applications, the LSM6DSK320X enables high-intensity motion tracking, impact and concussion monitoring, as well as other highly dynamic use cases.
-
-The device features a new gyroscope architecture with a fully differential readout chain and enhanced mechanical symmetry, providing excellent immunity to vibration and external disturbances. It also supports edge AI capabilities, including configurable motion detection through a Finite State Machine (FSM) and context awareness through a Machine Learning Core (MLC), enabling intelligent functions for personal electronics, IoT devices, sports and wearable applications, and drones.
-
-To optimize power consumption, the LSM6DSK320X integrates an Adaptive Self-Configuration (ASC) function that can automatically adjust sensor settings in real time according to detected motion patterns or MLC events, without host intervention. In addition, the digital subsystem incorporates ST’s Sensor Fusion Low Power (SFLP) technology for spatial orientation and positioning.
-
-Furthermore, the dedicated high-g accelerometer features an independent signal path and dedicated filtering functions to ensure reliable impact detection. These capabilities make the LSM6DSK320X particularly suitable for sports applications, concussion detection, impact detection, emergency-call systems, and drones.
-
+This chapter introduces how to use the **STM32C5** to communicate with the **LSM6DSV320X** over **I²C** and acquire three-axis angular velocity data through polling. The program performs device ID verification, a software reset, and basic configuration, including the gyroscope output data rate, full-scale range, and **Block Data Update (BDU)**. The main loop checks the data-ready status, reads the raw angular velocity data, converts it into physical units, and outputs the results through UART.
 
 - **STM32C5_LSM6DSK320X_Project2**:STM32C5开发LSM6DSK320X(2)----中断获取陀螺仪数据
 - **CSDN Blog**:
