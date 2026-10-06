@@ -68,13 +68,41 @@ Based on the external interrupt configuration introduced earlier, this chapter e
 This chapter introduces how to use the **STM32C542CCT6** to drive the **LSM6DSK320X** for **Wake-up motion detection**. The LSM6DSK320X integrates a configurable **Wake-up interrupt** function that uses the **low-g accelerometer** to detect device motion. When the detected acceleration exceeds the configured threshold, an interrupt signal can be generated through the **INT1/INT2 pins**.
 
 
+- **STM32C5_LSM6DSK320X_Project6**:STM32C5开发LSM6DSK320X(6)----倾斜度检测
+- **CSDN Blog**:
+
+本章介绍如何使用 STM32C542CCT6 驱动 LSM6DSK320X 实现 Tilt 倾斜检测。程序使能并初始化芯片内部的倾斜检测算法，配置嵌入式功能中断锁存，并将 Tilt 事件映射到 INT1。当设备姿态变化满足内部算法判定条件时，MCU 读取事件状态并通过串口输出检测结果。该功能用于检测倾斜变化事件，不直接输出具体的倾斜角度。
+
+This chapter introduces how to use the **STM32C542CCT6** to drive the **LSM6DSK320X** for **Tilt detection**. The program enables and initializes the embedded tilt algorithm, configures latched embedded-function interrupts, and routes Tilt events to **INT1**. When an orientation change meets the algorithm’s detection criteria, the MCU reads the event status and reports the result through UART. This function detects tilt events without directly providing numerical tilt angles.
 
 
+- **STM32C5_LSM6DSK320X_Project7**:STM32C5开发LSM6DSK320X(7)----自由落体检测
+- **CSDN Blog**:
+
+本章介绍如何使用 STM32C542CCT6 驱动 LSM6DSK320X 实现自由落体检测。程序配置加速度阈值和持续时间，当三轴加速度的绝对值同时低于设定阈值并满足时间条件时，芯片产生自由落体事件，并通过 INT1 通知 MCU。主循环读取事件状态，通过串口输出检测结果。
+
+This chapter introduces how to use the **STM32C542CCT6** to drive the **LSM6DSK320X** for **Free-fall detection**. The program configures an acceleration threshold and a duration requirement. When the absolute acceleration on all three axes remains below the threshold for the required duration, the sensor generates a free-fall event and notifies the MCU through **INT1**. The main loop reads the event status and reports the result through UART.
 
 
+- **STM32C5_LSM6DSK320X_Project8**:STM32C5开发LSM6DSK320X(8)----6D方向检测
+- **CSDN Blog**:
+
+本章介绍如何使用 STM32C542CCT6 驱动 LSM6DSK320X 实现 6D 方向检测。程序关闭 4D 模式，设置方向识别阈值，并将 6D 事件映射到 INT1。当设备姿态满足方向判定条件时，MCU 读取方向状态，通过串口输出 X+、X−、Y+、Y−、Z+ 或 Z−，实现六种基本方向的识别。
+
+This chapter introduces how to use the **STM32C542CCT6** to drive the **LSM6DSK320X** for **6D orientation detection**. The program disables 4D mode, configures the orientation threshold, and routes 6D events to **INT1**. When the device orientation meets the detection criteria, the MCU reads the direction flags and reports **X+, X−, Y+, Y−, Z+, or Z−** through UART.
 
 
+- **STM32C5_LSM6DSK320X_Project9**:STM32C5开发LSM6DSK320X(9)----活动与静止检测
+- **CSDN Blog**:
+
+本章介绍如何使用 STM32C542CCT6 驱动 LSM6DSK320X 实现活动与静止检测。程序配置运动阈值和静止等待时间，根据经过滤波的加速度数据判断设备状态，并将活动与静止状态变化事件映射到 INT1。MCU 读取状态后，通过串口输出 Activity 或 Inactivity 提示。本例在静止状态下保持加速度计和陀螺仪的工作配置不变。
+
+This chapter introduces how to use the **STM32C542CCT6** to drive the **LSM6DSK320X** for **Activity and Inactivity detection**. The program configures motion thresholds and an inactivity time window, determines the device state from filtered acceleration data, and routes state-change events to **INT1**. The MCU reads the status and reports **Activity** or **Inactivity** through UART. In this example, the accelerometer and gyroscope configurations remain unchanged during inactivity.
 
 
+- **STM32C5_LSM6DSK320X_Project10**:STM32C5开发LSM6DSK320X(10)----FIFO水位中断与六轴数据读取
+- **CSDN Blog**:
 
+本章介绍如何使用 STM32C542CCT6 驱动 LSM6DSK320X 实现 FIFO 缓存与水位中断读取。程序将 Low-G 加速度计和陀螺仪数据分别以 60 Hz 的速率写入 FIFO，配置连续模式，并设置 128 条记录的水位阈值。达到水位后，INT1 通知 MCU 批量读取数据，根据 TAG 区分加速度和角速度，完成单位换算，并通过串口输出本批次的样本数量及三轴平均值。
 
+This chapter introduces how to use the **STM32C542CCT6** to drive the **LSM6DSK320X** for **FIFO buffering and watermark interrupt-based acquisition**. Low-g accelerometer and gyroscope data are each written to the FIFO at **60 Hz**. The FIFO operates in continuous mode with a watermark of **128 records**. When the watermark is reached, **INT1** notifies the MCU to read the buffered data in a batch. The program identifies acceleration and angular velocity records by their **TAG**, converts the measurements into physical units, and outputs the sample counts and three-axis averages through UART.
